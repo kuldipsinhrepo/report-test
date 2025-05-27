@@ -1,8 +1,8 @@
-version: '3'
+version: '2.11'
 rpc:
-    listen: 'tcp://127.0.0.1:6001'
+    listen: 'tcp://127.0.0.1:11001'
 http:
-    address: '0.0.0.0:8080'
+    address: '0.0.0.0:9000'
     middleware:
         - gzip
         - static
@@ -15,8 +15,10 @@ http:
         num_workers: 1
         supervisor:
             max_worker_memory: 100
+            exec_ttl: 60s
 server:
-    command: 'php app.php'
+    command: 'D:/xampp/php/php.exe -d display_errors=1 -d display_startup_errors=1 -d error_reporting=E_ALL worker.php'
     relay: pipes
+    relay_timeout: 60s
 metrics:
     address: '127.0.0.1:2112'

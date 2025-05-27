@@ -18,7 +18,7 @@ final class Api
         $this->response = $response;
     }
     
-    #[Route(route: '/show-orders', name: 'show-orders', methods: 'GET')]
+    #[Route(route: '/api/show-orders', name: 'api.show-orders')]
     public function showOrders(ORMInterface $orm): \Psr\Http\Message\ResponseInterface
     {
         $repository = $orm->getRepository(Order::class);
